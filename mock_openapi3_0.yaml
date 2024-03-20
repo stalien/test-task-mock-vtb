@@ -1,0 +1,82 @@
+openapi: 3.0.0
+info:
+  title: Mock Service API
+  version: 1.0.0
+paths:
+  /mock:
+    post:
+      summary: Compute a mock object
+      requestBody:
+        content:
+          application/json:
+            schema:
+              $ref: '#/components/schemas/MockRequest'
+      responses:
+        '200':
+          description: Successful operation
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/MockResponse'
+        '400':
+          description: Bad request, input parameters are invalid
+components:
+  schemas:
+    MockRequest:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Иван
+        age:
+          type: integer
+          example: 37
+        mother:
+          type: object
+          properties:
+            name:
+              type: string
+              example: Ольга
+            age:
+              type: integer
+              example: 58
+        children:
+          type: array
+          items:
+            type: string
+          example: ["Маша", "Игорь", "Таня"]
+        married:
+          type: boolean
+          example: true
+        dog:
+          type: string
+          example: null
+    MockResponse:
+      type: object
+      properties:
+        name:
+          type: string
+          example: Иван
+        age:
+          type: integer
+          example: 54
+        mother:
+          type: object
+          properties:
+            name:
+              type: string
+              example: Ольга
+            age:
+              type: integer
+              example: 54
+        children:
+          type: array
+          items:
+            type: string
+          example: ["Маша", "Игорь", "Таня"]
+        married:
+          type: boolean
+          example: true
+        dog:
+          type: string
+          example: null
