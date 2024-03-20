@@ -1,4 +1,4 @@
-## Заглушка для обработки REST-запросов
+## Заглушка для обработки REST-запросов. Написана на Java с использованием SpringBoot.
 
 Пример запроса:
 ```
@@ -42,10 +42,16 @@
 Спецификация в формате OpenAPI лежит здесь [mock_openapi3_0.yaml](./mock_openapi3_0.yaml).
 
 ## Запуск приложения
-1. Запустите spring boot приложение командой `./mvnw spring-boot:run`
+1. Запустите spring boot приложение командой
+```shell 
+./mvnw spring-boot:run
+```
 2. Отправьте запрос с помощью утилиты командной строки curl. Тело запроса содержится в файле [request.json](./request.json).
-   Выполните команду `curl -X POST -d "@request.json" -H "Content-Type: application/json" http://localhost:8080/mock`
-   В ответ придет примерно такой JSON:
+   Выполните команду 
+```shell
+curl -X POST -d "@request.json" -H "Content-Type: application/json" http://localhost:8080/mock
+```
+В ответ придет примерно такой JSON:
 ```
 {
     "name": "Иван",
@@ -63,8 +69,7 @@
     "dog": null
 }
 ```
-
-логика формирования ответа:
+Логика формирования ответа:
 * Модуль принимает входные данные в виде POST-запросов на ручку `/mock` и отдает ответ (меняет значение любого `age` на 54).
 
 ## Настраиваемые параметры
